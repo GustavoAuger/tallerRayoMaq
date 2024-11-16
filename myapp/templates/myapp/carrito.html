@@ -1,0 +1,48 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+<br><br><br><br><br><br> 
+<div class="container mt-4">
+    <h2>Carrito de Compras</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio Unitario</th>
+                <th scope="col">Total</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in carrito_items %}
+            <tr>
+                <td><img src="{{ item.content_object.icono }}" alt="Imagen del producto" style="width: 64px; height: 64px;"></td>
+                <td>{{ item.content_object.nombre }}</td>
+                <td>
+                    <form method="post" action="{% url 'actualizar_carrito' item.id %}">
+                        {% csrf_token %}
+                        <input type="number" name="cantidad" value="{{ item.cantidad }}" min="1" class="form-control d-inline-block" style="width: 60px;" onchange="this.form.submit()">
+                    </form>
+                </td>
+                <td>${{ item.content_object.precio }}</td>
+                <td>${{ item.total }}</td>
+                <td>
+                    <form method="post" action="{% url 'eliminar_del_carrito' item.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">&times;</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3>Total General: ${{ total_general }}</h3>
+    <form method="post" action="{% url 'finalizar_compra' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success btn-lg">Finalizar Compra</button>
+    </form>
+</div>
+
+{% endblock %}

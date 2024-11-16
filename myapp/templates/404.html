@@ -1,0 +1,19 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TALLER RAYO MAKWEEN</title>
+    <link rel="shortcut icon" href="{% static 'myapp/img/favicon.ico' %}" type="image/x-icon"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/style.css' %}">
+</head>
+<body id="a404">
+  <div class="content">
+    <h3>404 - Página no encontrada</h3>
+    <p>Lo sentimos, pero la página que estás buscando no existe.</p>
+    <button type="submit" class="btn btn-cotiza fadeIn btnserv"><a href="{% url 'index' %}">Volver a la página principal</a></button>
+</div>
+</body>
+</html>

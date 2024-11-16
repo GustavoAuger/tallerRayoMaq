@@ -1,0 +1,63 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+	<!--------------------------------productos----------------------------->
+<main class="wap">
+ <div class="producto" id="sec-3">
+      <div class=" flex-column justify-content-center text-white align-items-left padl">
+    		<h1 class="text-uppercase font-weight-bold text-left mx-5 padt delay fadeInDown animated hinge" > REFACCIONES RAYO MAKWEEN</h1>
+    		<p class=" mx-5 text-left textop delay-one fadeInLeft animated hinge"> Potencia tu vehículo con nuestros productos especializados.
+			<br>Ofrecemos una gran variedad de productos para refaccionar tu vehículo. 
+			<br>Desde partes de repuesto hasta accesorios de vanguardia. Encuentra todo 
+			<br>lo que necesitas para mejorar tu experiencia de conducción en un solo lugar. 
+		    <br><br>Lleva tu vehículo al siguiente nivel<i class= "fadeInDown animated dela">!</i></p>
+			<button type="button" class="btn btn-primary btn-lg mx-5 bofg fadeInUp delay-three animated hinge btncolor" href="" id="contacto"> Ver más </button>
+      </div>
+</div>
+<div class="horario">
+<p class="" ><i class="bi bi-stopwatch"></i> Horario de atención: Lunes a sábado de 09:00 a 18:00 hrs. /   <i class="bi bi-geo-alt-fill"></i> Ignacio carrera pinto 852, Villa alemana </p>
+</div>
+
+	
+<!----------------------------------middle prod--------------------------------->
+
+<section id="serviciossss" class="modulo-productos">
+    <div class="container">
+        <div class="titulo text-center wow fadeInUp tituloserv">
+            <h2>BATERIAS</h2>
+        </div>
+        <div class="space"></div>
+        <div class="row servv">
+            {% for bateria in baterias %}
+                <div class="servicio col-lg-3 col-md-6 wow fadeInUp">
+                    <div class="box-servicio">
+                        <div class="img-servicio col-md-12">
+                            <div class="icon">
+                                <img width="64" height="64" class="img-responsive" src="https://img.icons8.com/badges/48/car-battery.png" alt="car-battery"/>
+                            </div>
+                        </div>
+                        <div class="texto col-md-12 text-center">
+                            <div class="titulo-tres"><h3>{{ bateria.marca }}</h3></div>
+                            <p>{{ bateria.nombre }}</p>
+                            <p>Precio: ${{ bateria.precio }}</p>
+                            <form method="post" action="{% url 'agregar_al_carrito' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="content_type" value="{{ bateria.content_type }}">
+                                <input type="hidden" name="object_id" value="{{ bateria.id }}">
+                                <div class="form-group">
+                                    <label for="cantidad">Cantidad:</label>
+                                    <input type="number" name="cantidad" min="1" max="10" class="form-control" placeholder="Cantidad" required>
+                                    <input name="tipo" value="Bateria"  hidden>
+                                </div>
+                                <button type="submit" class="btn btn-cotiza fadeIn btnserv">Agregar al carrito</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+ </main>
+</div>
+ {% endblock %}

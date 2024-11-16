@@ -1,0 +1,79 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<!----------------------------------- NOSOTROS ----------------------------------->
+
+<main class="wap">       
+<div class="nosotros" id="">
+      <div class=" flex-column justify-content-center text-white align-items-left padl padl2">
+    		<h1 class="text-uppercase font-weight-bold text-left mx-5 padt delay fadeInDown animated hinge">RAYO MAKWEEN, Compromiso & Confianza</h1>
+    		<p class=" mx-5 text-left textop delay-one fadeInLeft animated hinge "> Con más de 10 años de experiencia, nuestro taller se enorgullece
+			<br>de ofrecer servicios de excelencia en mantenimiento mecánico. 
+			<br>Nuestros expertos mecánicos, altamente capacitados, 
+			<br>garantizan soluciones confiables para tu vehículo. <br><br>
+			<br>Tu confianza, nuestro compromiso. Tu vehículo está en buenas manos.</p>
+			<button type="button" class="btn btn-primary btn-lg mx-5 bofg fadeInUp delay-three animated hinge btncolor"> Más Información </button>
+      </div>
+</div>
+<div class="horario">
+<p class="" ><i class="bi bi-stopwatch"></i> Horario de atención: Lunes a sábado de 09:00 a 18:00 hrs. /   <i class="bi bi-geo-alt-fill"></i> Ignacio carrera pinto 852, Villa alemana </p>
+</div>
+<section id="serviciossss" class="modulo-servicios">
+<div class="container">
+	<div class="titulo text-center wow fadeInUp tituloserv" style="visibility: visible; animation-name: fadeInUp;"><h2>NUESTRO EQUIPO</h2></div>
+	<div class="space"></div>
+	<div class="row servv">
+		<div class="servicio col-lg-3 col-md-6 wow fadeInUp" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+			<div class="card" style="width: 18rem;">
+			 
+			  <img src="{% static 'myapp/img/mecanicos/jefemec.png'  %}" class="card-img-top" style="background-color:rgba(100,100,100,0.6);"alt="...">
+			
+			  <div class="card-body">
+				<h5 class="card-title">Jefe Taller</h5>
+				<p class="card-text">Renato Salazar - Encargado de liderar y coordinar las operaciones del taller mecánico, garantizando la eficiencia y calidad en los servicios ofrecidos.</p>
+				<a href="#" class="btn btn-primary">Ver más</a>
+			  </div>
+			</div>
+		</div>
+		<div class="servicio col-lg-3 col-md-6 wow fadeInUp"  style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+			<div class="servicio col-lg-3 col-md-6 wow fadeInUp" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+				<div class="card" style="width: 18rem;">
+				  <img src="{% static 'myapp/img/mecanicos/mec1.png' %}" class="card-img-top" style="background-color:rgba(100,100,100,0.6);"alt="...">
+				  <div class="card-body">
+					<h5 class="card-title">Mecánico</h5>
+					<p class="card-text">Manuel Soto - Experto en diagnóstico, reparación y mantenimiento de vehículos, comprometido con ofrecer soluciones eficientes y de calidad.</p>
+					<a href="#" class="btn btn-primary">Ver más</a>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="servicio col-lg-3 col-md-6 wow fadeInUp" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+			<div class="servicio col-lg-3 col-md-6 wow fadeInUp" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+				<div class="card" style="width: 18rem;">
+				  <img src="{% static 'myapp/img/mecanicos/mec2.png' %}" class="card-img-top"style="background-color:rgba(100,100,100,0.6);" alt="...">
+				  <div class="card-body">
+					<h5 class="card-title">Eléctrico</h5>
+					<p class="card-text">Leonardo Muñoz - Experimentado en sistemas eléctricos automotrices, se destaca por su habilidad para resolver problemas con precisión y eficiencia.</p>
+					<a href="#" class="btn btn-primary">Ver más</a>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="servicio col-lg-3 col-md-6 wow fadeInUp" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+			<div class="servicio col-lg-3 col-md-6 wow fadeInUp" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+				<div class="card" style="width: 18rem;">
+				  <img src="{% static 'myapp/img/mecanicos/mec3.png' %}" class="card-img-top"style="background-color:rgba(100,100,100,0.6);" alt="...">
+				  <div class="card-body">
+					<h5 class="card-title">Especialista</h5>
+					<p class="card-text">Javier Morales - Amplia experiencia en diagnóstico y reparación de problemas complejos, ofrece soluciones técnicas avanzadas y personalizadas.</p>
+					<a href="#" class="btn btn-primary">Ver más</a>
+				  </div>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>
+</section>
+</main>
+{% endblock %}

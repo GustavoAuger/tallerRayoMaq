@@ -1,0 +1,99 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+     <!-- --Reserva-- -->
+    <div class="cuerpof">
+      <main class="wap">
+       <div class="reservar" id="">
+         <div class=" flex-column justify-content-center text-white align-items-left padl">
+           <h1 class="text-uppercase font-weight-bold text-left mx-5 padt delay fadeInDown animated hinge" > DIAGNOSTICO RAYO MAKWEEN</h1>
+           <p class=" mx-5 text-left textop delay-one fadeInLeft animated hinge"> ¿Tu vehículo presenta fallas y no sabes qué hacer? ¡No te preocupes más! 
+              <br>En nuestro taller, ofrecemos un servicio de revisión exhaustiva y express.
+              <br>Nuestro equipo de expertos está aquí para brindarte la tranquilidad que necesitas, 
+              <br>usamos tecnología de vanguardia y años de experiencia para generar el mejor diagnostico.
+              <br>Confía en nosotros para mantener tu vehículo en óptimas condiciones<i class= "fadeInDown animated dela">!</i>
+            </p>
+           <button type="button" class="btn btn-primary btn-lg mx-5 bofg fadeInUp delay-three animated hinge btncolor" href="" id="contacto"> Agendar </button>
+          </div>
+        </div>
+        <div class="horario">
+          <p class="" ><i class="bi bi-stopwatch"></i> Horario de atención: Lunes a sábado de 09:00 a 18:00 hrs. /   <i class="bi bi-geo-alt-fill"></i> Ignacio carrera pinto 852, Villa alemana </p>
+        </div>
+        <div id="weatherInfo">
+          <p id="temperature"></p>
+          <p id="weather"></p>
+        </div>
+        <!-- Formulario reservar hora -->
+        <div class= "form-container mt-4">
+          <form action="{% url 'reservar_envio' %}" method="post" class="row g-3 d-flex align-items-center justify-content-center" onsubmit="return validateFormReserva()">
+            <!-- Nombre y Apellidos -->
+            {% csrf_token %}
+            <div class="col-8">
+                <label for="nombreInput" class="form-label">Nombre</label>
+                <input name="nombre" type="text" class="form-control" id="nombreInput" placeholder="Ingrese su nombre" {% if is_authenticated %}value="{{ cliente.nombre }}"{% endif %}>
+            </div>
+        
+            <div class="col-8">
+                <label for="apellidosInput" class="form-label">Apellidos</label>
+                <input name="apellido" type="text" class="form-control" id="apellidosInput" placeholder="Ingrese sus apellidos" {% if is_authenticated %}value="{{ cliente.apellido }}"{% endif %}>
+            </div>
+        
+            <!-- Rut y Correo -->
+            <div class="col-8">
+                <label for="rutInput" class="form-label">Rut</label>
+                <input name="rut" type="text" class="form-control" id="rutInput" placeholder="Ingrese su rut" {% if is_authenticated %}value="{{ cliente.rut }}"{% endif %}>
+            </div>
+        
+            <div class="col-8">
+                <label for="emailInput" class="form-label">Correo</label>
+                <input name="email" type="email" class="form-control" id="emailInput" placeholder="Ingrese su correo" {% if is_authenticated %}value="{{ cliente.email }}"{% endif %}>
+            </div>
+        
+            <div class="col-8">
+                <label for="telefonoInput" class="form-label">Teléfono</label>
+                <input name="telefono" type="text" class="form-control" id="telefonoInput" placeholder="Ingrese número de teléfono">
+            </div>
+        
+            <div class="col-8">
+                <label for="marcaInput" class="form-label">Marca del vehículo</label>
+                <input name="marca" type="text" class="form-control" id="marcaInput" placeholder="Ingrese marca del vehículo">
+            </div>
+        
+            <div class="col-8">
+                <label for="anioSelect" class="form-label">Año del vehículo</label>
+                <select name="anno" id="anioSelect" class="form-select" aria-label="Default select example">
+                    <option selected>Seleccione año del vehículo</option>
+                    <!-- Las opciones de años se generarán aquí -->
+                </select>
+            </div>
+        
+            <!-- Datepicker -->
+            <div class="col-8">
+                <label for="startDate">Agendar servicio</label>
+                <input name="fecha" id="startDate" class="form-control" type="date" />
+                <span id="startDateSelected"></span>
+            </div>
+        
+            <!-- Checkbox -->
+            <div class="col-8">
+                <h5 class="mt-1"><b>Seleccione servicio :</b></h5>
+        
+                <div class="form-check form-check-inline">
+                    <input name="diagnostico" class="form-check-input" type="checkbox" value="diagExpress" id="express">
+                    <label class="form-check-label" for="express" style="font-size: large;">Diagnóstico express</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input name="diagnostico" class="form-check-input" type="checkbox" value="diagCompleto" id="completo">
+                    <label class="form-check-label" for="completo" style="font-size: large;">Diagnóstico completo</label>
+                </div>
+            </div>
+        
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary col-8 mb-5 propbtn">Enviar</button>
+        </form>
+        </div>
+      </main>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+<br><br><br><br><br><br> 
+<div class="container mt-4">
+    <h2>Finalizar Compra</h2>
+
+        <form method="post" action="{% url 'finalizar_comprax' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="numero_tarjeta">Número de Tarjeta</label>
+                <input type="text" class="form-control" id="numero_tarjeta" name="numero_tarjeta" required>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="text" class="form-control" id="cvv" name="cvv" required>
+            </div>
+            <div class="form-group">
+                <label for="contrasena">Contraseña</label>
+                <input type="password" class="form-control" id="contraseña" name="contrasena" required>
+            </div>
+            <button type="submit" class="btn btn-success">Confirmar</button>
+            <a href="{% url 'carrito' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+
+</div>
+
+{% endblock %}

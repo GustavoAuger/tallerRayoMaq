@@ -1,0 +1,44 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+<main class="perfil-fondo-a"> 
+  <div style="height: 100%; padding-top:200px">
+    <div class="perfil">
+		 <form action="{% url 'actualizar_informacion_cliente' %}" method="POST" class= "row g-3 d-flex align-items-center justify-content-center" onsubmit="return validateUpdateForm()">
+            {% csrf_token %}  
+           <!--INPUTS-->
+            <div class = "col-5 ">
+              <label for="nombreInput" class="form-label fontxperf">Nombre</label>
+              <input name="nombre" type="text" class="form-control" id="nombreInput" placeholder="Ingrese su nombre">
+            </div>
+
+            <div class = "col-5">
+              <label for="apellidosInput" class="form-label fontxperf">Apellido(s)</label>
+              <input name="apellido" type="text" class="form-control" id="apellidosInput" placeholder="Ingrese su(s) apellido(s)">
+            </div>
+
+            <div class = "col-5">
+              <label for="emailInput" class="form-label fontxperf">Correo</label>
+              <input name="email" type="email" class="form-control" id="emailInput" placeholder="Ingrese su correo">
+            </div>
+
+            <div class = "col-5">
+              <label for="contrasena" class="form-label fontxperf">Contraseña</label>
+              <input name="contrasena" type="text" class="form-control" id="telefonoInput" placeholder="Ingrese su nueva contraseña">
+            </div>
+
+            <div class = "col-5">
+              <label for="marcaInput" class="form-label fontxperf" style="left:0px; margin-left:0px;">Confirmar Contraseña</label>
+              <input name="contrasena2"type="text" class="form-control" id="marcaInput" placeholder="Confirme su nueva contraseña">
+            </div>
+            <div class = "col-12"></div>
+       
+           <button type="button" class="btn btn-primary col-2 mb-4 propbtn mx-5 mt-4 align-items-left" style="left:0px;"  onclick="window.history.back()">Volver atrás</button>  
+           <button type="submit" class="btn btn-primary col-2 mb-4 mt-4 propbtn mx-5">Actualizar</button>  <!--SUBMIT-->
+
+          </form>
+        </div>
+        </div>
+      </main>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!--------------------------------servicios----------------------------->
+<div class="cuerpof">
+<main class="wap" id="">
+	<div class="slider-wrapper theme-mi-slider">
+		<div id="slider" class="nivoSlider">     
+		    <img src="{% static 'myapp/img/1.jpg' %}" alt="" title="#htmlcaption1" />    
+		    <img src="{% static 'myapp/img/3.jpg' %}" alt="" title="#htmlcaption3" /> 
+		    <img src="{% static 'myapp/img/2.jpg' %}" alt="" title="#htmlcaption2" />    
+		    <img src="{% static 'myapp/img/4.jpg' %}" alt="" title="#htmlcaption4" />    
+		    <img src="{% static 'myapp/img/5.jpg' %}" alt="" title="#htmlcaption5" />   
+		    <img src="{% static 'myapp/img/6.jpg' %}" alt="" title="#htmlcaption6" />  			
+		</div>   
+		
+		<div id="htmlcaption1" class="nivo-html-caption">     
+		    <h1 class="textoresponsive">Alineamiento</h1>
+		</div>
+		<div id="htmlcaption2" class="nivo-html-caption">     
+		    <h1 class="textoresponsive">Rectificación de discos</h1>
+		</div>
+		<div id="htmlcaption3" class="nivo-html-caption">     
+		    <h1 class="textoresponsive">Servicio de suspensión</h1>
+		</div>
+		<div id="htmlcaption4" class="nivo-html-caption">     
+		    <h1 class="textoresponsive">Diagnóstico y mantenimiento</h1>
+		</div>
+		<div id="htmlcaption5" class="nivo-html-caption">     
+		    <h1 class="textoresponsive">Afinamiento</h1>
+		</div>
+		<div id="htmlcaption6" class="nivo-html-caption">     
+		    <h1 class="textoresponsive">Cambio de aceite y filtro del motor</h1>
+		</div>
+	</div> 
+	
+<div class="horario">
+<p class="" ><i class="bi bi-stopwatch"></i> Horario de atención: Lunes a sábado de 09:00 a 18:00 hrs. /   <i class="bi bi-geo-alt-fill"></i> Ignacio carrera pinto 852, Villa alemana </p>
+</div>
+<!----------------------------------middle serv--------------------------------->
+<section id="serviciossss" class="modulo-servicios">
+<div class="container">
+	<div class="titulo text-center wow fadeInUp tituloserv" style="visibility: visible; animation-name: fadeInUp;"><h2>Servicios</h2></div>
+	<div class="space"></div>
+	<div class="row servv">
+		{% for servicio in servicios %}
+		<div class="servicio col-lg-3 col-md-6 wow fadeInUp" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+			<div class="box-servicio"> 
+				<a class="btn-cotiza">
+					<div class="img-servicio col-md-12">
+						<div class="icon"> <img width="64" height="64" class="img-responsive" src="{{ servicio.icono }}" alt="tire-wobble"/></div>
+					</div>     
+				</a>
+				<div class="texto col-md-12 text-center">
+					<div class="titulo-tres"><h3>{{ servicio.nombre }}</h3></div>
+					<p>{{ servicio.descripcion }}</p>
+					<p>Precio: ${{ servicio.precio }}</p>
+					<form method="post" action="{% url 'agregar_al_carrito' %}">
+						{% csrf_token %}
+						<input type="hidden" name="content_type" value="{{ servicio.content_type }}">
+						<input type="hidden" name="object_id" value="{{ servicio.id }}">
+						<div class="form-group">
+							<input type="number" name="cantidad" min="1" max="1" class="form-control" placeholder="Cantidad" value="1" hidden>
+							<input name="tipo" value="Servicio"  hidden>
+						</div>
+						<button type="submit" class="btn btn-cotiza fadeIn btnserv">Agregar al carrito</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+
+
+</section>
+</main>
+</div>
+{% endblock %}
